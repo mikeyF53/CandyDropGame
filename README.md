@@ -1,16 +1,11 @@
-# Project 1 Mike Fang Candy Drop
-
-# Title
+# Project 1 Candy Drop
 
 
 ## Instructions
-
 Objective of this game is to carefully time the movement of the candy dropper in to the candy collector.
 
 ## Wireframe
-See drawing.
-
-
+*Add drawing*
 
 
 ## Main
