@@ -13,11 +13,11 @@ const removeInstrBox = () => {
   remBox.remove();
   }
 startButton.addEventListener('click', (removeInstrBox));
-//////////////Start of the game//////////////
-const startDropper = () => {
 
+//////////////Carete the candy dropper//////////////
+const startDropper = () => {
   const dropperBox = document.createElement('div');
-  dropperBox.classList.add('dropperBox')
+    dropperBox.classList.add('dropperBox')
   const dropper = document.createElement('div');
     dropper.classList.add('candyDropper');
     board.appendChild(dropperBox);
@@ -33,12 +33,27 @@ const mkWalls = () => {
     walls.classList.add('walls');
     wallLeft.classList.add('wallLeft');
     wallRight.classList.add('wallRight');
-
-    board.appendChild(walls);
-    walls.appendChild(wallLeft);
-    walls.appendChild(wallRight);
+     board.appendChild(walls);
+     walls.appendChild(wallLeft);
+     walls.appendChild(wallRight);
 };
 
-//must fix this, make function to call them //
-startButton.addEventListener('click', startDropper);
-startButton.addEventListener('click', mkWalls);
+//Create the dropping candy piece///
+const candyPiece = () => {
+  const theCandy = document.createElement('div');
+  theCandy.classList.add('theCandy');
+  board.appendChild(theCandy);
+};
+
+//start the game //
+const beginGame = () => {
+  startButton.addEventListener('click', startDropper);
+  startButton.addEventListener('click', mkWalls);
+  startButton.addEventListener('click', candyPiece);
+};
+
+beginGame();
+
+
+
+//body.addEventListener('keydown', candyPiece);

@@ -58,7 +58,7 @@ button {
   height: 25px;
   border-radius: 50px;
   animation-name: slide;
-  animation-duration: 1.5s;
+  animation-duration: 4s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
@@ -124,4 +124,11 @@ button {
   height: 50px;
   right: 0px;
 
+}
+.theCandy {
+  position: relative;
+  background-color: pink;
+  width: 25px;
+  height: 25px;
+  border-radius: 50px;
 }
