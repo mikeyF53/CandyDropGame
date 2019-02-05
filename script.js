@@ -33,13 +33,25 @@ const candyPiece = () => {
   board.appendChild(theCandy);
   return theCandy;
 };
+//dropping candy//
+const moveCandy = (candy) => {
+
+  if (candy.offsetTop + candy.offsetHeight < board.offsetHeight) {
+    candy.style.top = `${candy.offsetTop + 10}px`;
+    console.log(candy.style.top);
+  } else if (candy.offsetTop + candy.offsetHeight >= board.offsetHeight) {
+    console.log('works');
+    candy.remove();
+    clearInterval(timer);
+
+  }
+}
 ///Set position for candyPiece
 const candyPosition = () => {
-
-  const candyPos = `${dropper.offsetLeft}px`; //only a number
+  let candyPos = `${dropper.offsetLeft}px`; //only a number
   const theCandyMade = candyPiece(); // saving to the piece that was created
   theCandyMade.style.left = candyPos;// setting the created piece to the px postion
-//  let newCandyPos = `${newCandyPiece.offsetTop + newCandyPiece.offsetHeight}px`;
+  timer = setInterval(moveCandy, 20, theCandyMade);
 }
 const candyFire =(ev) => {
   if (ev.keyCode === 32) {
@@ -47,23 +59,24 @@ const candyFire =(ev) => {
 };
 };
 
-//movement for candy
+//dropping the candy
 
-const dropCandy = () => {
-    //const currentCandyTop = `${theCandy.offsetTop}`;
-    //const currentCandyHeight = `${theCandy.offsetHeight}`;
-if (`${newCandyPiece.offsetTop + newCandyPiece.offsetHeight < board.offsetHeight}`) {
-  newCandyPiece.style.top = `${newCandyPiece.offsetTop}` + 5;
-  console.log(newCandyPiece.offsetTop);
-} else {
-  theCandy.remove();
+// const dropCandy = () => {
+//     const currentCandy = newCandyPiece.offsetTop;
+//     console.log(currentCandy);
+//     const currentCandyHeight = `${newCandyPiece.offsetHeight}px`;
+// if (currentCandyTop + currentCandyHeight < `${board.offsetHeight}`) {
+//   newCandyPiece.style.top = `${newCandyPiece.offsetTop} + 5` ;
+// } else {
+//   theCandy.remove();
+// }
+// setInterval(candyPiece, 50, );
+// }
+
+const playGame = () => {
+body.addEventListener('keyup', candyFire);
 }
-setInterval(candyPiece, 20, dropCandy);
-}
-
-
-  body.addEventListener('keydown', candyFire);
-
+playGame();
 ////// Create the walls/////////////
 const mkWalls = () => {
 
