@@ -15,9 +15,14 @@ const removeInstrBox = () => {
 startButton.addEventListener('click', (removeInstrBox));
 //////////////Start of the game//////////////
 const startDropper = () => {
+
+  const dropperBox = document.createElement('div');
+  dropperBox.classList.add('dropperBox')
   const dropper = document.createElement('div');
     dropper.classList.add('candyDropper');
-    board.appendChild(dropper);
+    board.appendChild(dropperBox);
+    dropperBox.appendChild(dropper);
+
 };
 ////// Create the walls/////////////
 const mkWalls = () => {
@@ -28,11 +33,12 @@ const mkWalls = () => {
     walls.classList.add('walls');
     wallLeft.classList.add('wallLeft');
     wallRight.classList.add('wallRight');
-    console.log(walls);
+
     board.appendChild(walls);
     walls.appendChild(wallLeft);
     walls.appendChild(wallRight);
 };
 
-startButton.addEventListener('click', (startDropper));
-startButton.addEventListener('click', (mkWalls));
+//must fix this, make function to call them //
+startButton.addEventListener('click', startDropper);
+startButton.addEventListener('click', mkWalls);
