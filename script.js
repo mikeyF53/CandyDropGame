@@ -36,21 +36,23 @@ const candyPiece = () => {
 ///Set position for candyPiece
 
 const candyPosition = () => {
-  const candyPos = `${dropper.offsetLeft + dropper.offsetWidth / 2}px`;
-  return candyPos;
+  const candyPos = `${dropper.offsetLeft}px`;
+
+  let theCandy = candyPiece();
+  theCandy.style.left = candyPos;
   console.log(candyPos);
 }
-
-const candyFire =(ev) => {
-
-  if (ev.keyCode === 32) {
-    console.log("space bar pressed");
-    let theCandy = candyPiece();
-    theCandy.style.left = candyPostion();
-};
-
-};
-  body.addEventListener('keydown', candyFire);
+//firing the candy down
+// const candyFire =(ev) => {
+//
+//   if (ev.keyCode === 32) {
+//     console.log("space bar pressed");
+//     let theCandy = candyPiece();
+//     theCandy.style.left = candyPostion();
+// };
+//
+// };
+  body.addEventListener('keydown', candyPosition);
 
 ////// Create the walls/////////////
 const mkWalls = () => {

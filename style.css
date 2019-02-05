@@ -52,7 +52,7 @@ button {
 }
 .candyDropper {
   /* //must add random starting position every level// */
-  left: 0px;
+  /* left: 0px; */
   position: relative;
   background-color: white;
   width: 25px;
@@ -127,9 +127,7 @@ button {
 
 }
 .theCandy {
-  left: 250px;
   position: absolute;
-
   background-color: pink;
   width: 25px;
   height: 25px;
