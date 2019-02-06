@@ -13,27 +13,30 @@ const wallRight = document.querySelector('.wallRight')
 
 const removeInstrBox = () => {
   remBox.remove();
-
-// document.querySelectorAll("section").forEach(e => e.parentNode.removeChild(e))
-// for (i = 0; i < section.length; i++) {
-//   section.removeChild;
 }
 startButton.addEventListener('click', (removeInstrBox));
 
-//show walls display on
+//show walls display block
 const blockAppear = () => {
   wallLeft.style.display = 'block';
   wallRight.style.display = 'block';
 }
 
-//get wall Position
-const wallPos = (wall) => {
-wallLeftPos = wallLeft.offsetTop;
-//if (wallLeft.offsetTop + wallLeft.offsetHeight <
+//collision detection
+const collisionDetection = (candy) => {
+    if (candy.offsetTop + candy.offsetHeight > wallLeft.offsetHeight + 490 && candy.offsetLeft <  wallLeft.offsetWidth)  {
+    console.log('you hit left wall');
+    candy.remove();
+    clearInterval(timer);
+    }
+   else if (candy.offsetTop + candy.offsetHeight > wallRight.offsetHeight + 490 && candy.offsetLeft + candy.offsetWidth > wallRight.offsetLeft) {
+    console.log('you hit right wall');
+    candy.remove();
+    clearInterval(timer);
+  }
+};
 
-}
-wallPos();
-console.log(wallPos);
+
 ////////////Create the candy dropper//////////////
 const startDropper = () => {
 
@@ -50,23 +53,20 @@ const candyPiece = () => {
 
   theCandy = document.createElement('div');
   theCandy.classList.add('theCandy');
-
   return theCandy;
 };
 
 //dropping candy//
 const moveCandy = (candy) => {
-
+  collisionDetection(theCandy);
   if (candy.offsetTop + candy.offsetHeight < board.offsetHeight) {
     candy.style.top = `${candy.offsetTop + 10}px`;
     console.log(candy.style.top);
   } else if (candy.offsetTop + candy.offsetHeight >= board.offsetHeight) {
-    console.log('moving candy');
     candy.remove();
     clearInterval(timer);
-
   }
-}
+};
 ///Set position for candyPiece
 const candyPosition = () => {
 
