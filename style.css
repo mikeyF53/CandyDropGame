@@ -42,6 +42,7 @@ section {
 
 }
 button {
+  z-index: 1;
   height: 40px;
   width: 20%;
 
@@ -98,8 +99,9 @@ button {
 }
 
 .walls {
-  background-color: black;
-  /* display: flex; */
+
+  /* background-color: black; */
+  display: flex;
   /* flex-wrap: nowrap; */
   position: absolute;
   height: 55px;
@@ -111,6 +113,7 @@ button {
 
 }
 .wallLeft {
+  display: none;
   position: absolute;
   background: maroon;
   width: 220px;
@@ -119,6 +122,7 @@ button {
 
 }
  .wallRight {
+   display: none;
   position: absolute;
   background: maroon;
   width: 220px;
@@ -126,6 +130,14 @@ button {
   right: 0px;
 
 }
+/* .wallMid {
+  float: right;
+  position: absolute;
+  background: white;
+  width: 60px;
+  height: 50px;
+
+} */
 .theCandy {
   position: absolute;
   background-color: pink;
