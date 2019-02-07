@@ -3,7 +3,7 @@ const startButton = document.querySelector('button');
 const body = document.querySelector('body');
 const box = document.querySelector('box');
 const remBox = document.querySelector('.toRemove')
-const newCandyPiece = document.querySelectorAll('theCandy');
+const newCandyPiece = document.querySelector('.theCandyMade');
 const walls = document.querySelector('.walls');
 const wallLeft = document.querySelector('.wallLeft');
 const wallRight = document.querySelector('.wallRight');
@@ -38,23 +38,18 @@ const hitWall = () => {
   lives -= 1;//must put in function
   dispScoreLives();
   checkCond();
-  // clearInterval(timer);
-}
+};
 //score condition
 const bullsEye = () => {
   score += 1;
   dispScoreLives();
-  // clearInterval(timer);
-}
-
+};
 //collision detection
 const collisionDetection = (candy) => {
     if (candy.offsetTop + candy.offsetHeight > wallLeft.offsetHeight + 485 && candy.offsetLeft <  wallLeft.offsetWidth)  {
-    console.log('you hit left wall');
     candy.remove();
     hitWall();
   } else if (candy.offsetTop + candy.offsetHeight > wallRight.offsetHeight + 485 && candy.offsetLeft + candy.offsetWidth > wallRight.offsetLeft) {
-    console.log('you hit right wall');
     candy.remove();
     hitWall();
   } else if (candy.offsetTop + candy.offsetHeight >= walls.offsetTop + walls.offsetHeight) {
@@ -71,17 +66,11 @@ const checkCond = () => {
 //lose actions
 const youLose = () => {
   alert(`Sorry, you lost! Your score was ${score}`); // change this to display on screen innerHTML
-  //remBox.style.display = 'block';
   location.reload()
   lives = 11;
   score = 0;
-}
-//increase speed of dropperBox
-// const speedUp = () => {
-//   if (score >= 5) {
-//     dropper.style.animationDuration = '1s';
-//   }
-// }
+};
+//increase the speed of candy dropper//
 const speedUp = () => {
   if (score == 5) {
     dropper.style.animationDuration = '3.0s';
@@ -90,10 +79,9 @@ const speedUp = () => {
   }else if (score == 15) {
     dropper.style.animationDuration = '2.0s';
   }else if (score == 20) {
-    dropper.style.animationDuration = '1.0s';
-};
+    dropper.style.animationDuration = '1.5s';
 }
-
+};
 ////////////Create the candy dropper//////////////
 const startDropper = () => {
   const dropperBox = document.createElement('div');
@@ -132,17 +120,14 @@ const candyPosition = () => {
 };
 //Spacekey for dropping candy
 const candyFire =(ev) => {
-    if (ev.keyCode === 32) {
 
+    if (ev.keyCode === 32 &&  document.querySelector('.theCandy') == null) {
       candyPosition();
     }
-    // setTimeout(function (candyFire) {
-    //   console.log("shoot")
-    // }, 2000);
 };
 //start the game //
 const playGame = () => {
-  body.addEventListener('keydown', candyFire);
+  body.addEventListener('keyup', candyFire);
 }
 playGame();
 
@@ -152,6 +137,6 @@ const beginGame = () => {
   startButton.addEventListener('click', candyPiece);
   startButton.addEventListener('click', (removeInstrBox));
   startButton.addEventListener('click', (dispScoreLives));
-  body.addEventListener('mousedown', candyPosition);
+  //board.addEventListener('mousedown', candyPosition);
 };
 beginGame();
