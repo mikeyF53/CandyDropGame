@@ -1,34 +1,35 @@
-h2 {
-
+body {
+  background-color: grey;
+}
+h1 {
+  padding-top: 25px;
   width: auto;
   height: 30px;
   text-align: center;
   margin-top: 10px;
-
-
+  font-family: 'Fredoka One', sans-serif;
+  font-size: 50px;
 }
-body {
-
-  background-color: grey;
-
+.instrBox {
+  padding-top: 60px;
+  display: flex;
+  justify-content: space-around;
 }
 
 .toRemove {
-  display: inline-flex;
+  border-radius: 50px;
   justify-content: center;
   justify-content: space-between;
   align-items: center;
-  background-color: green;
+  background-color: #58D68D;
   width: 500px;
-  height: 600px;
-
+  height: 585px;
+  margin: 0 auto;
 }
 .gameBoard {
-
-  background-color: green;
-  /* justify-content: space-between; */
-  /* justify-content: flex-end; */
-  align-content: center;
+  border-radius: 50px;
+  border: 5px dashed #EC7063;
+  background-color: #58D68D;
   width: 500px;
   height: 600px;
   position: relative;
@@ -36,88 +37,93 @@ body {
 }
 
 section {
+  text-align: center;
+  background-color: #AF7AC5;
+  border-radius: 25px;
   margin: 10px;
-  border: 2px solid pink;
-  background-color: white;
+  border: 3px dashed white;
   width: 150px;
   height: 300px;
 
 }
+.button {
+  padding-top: 40px;
+  text-align: center;
+}
 button {
+  position: relative;
+  background-color: #EC7063;
+  border: 1px dashed white;
+  color: white;
+  font-size: 25px;
   z-index: 1;
   height: 40px;
   width: 20%;
-  border-radius: 25px;
-  margin-bottom: 20;
-
-  /* left: 200px; */
-  /* bottom: 10px; */
+  border-radius: 50px;
   align-self: flex-end;
-
 }
 .candyDropper  {
   /* //must add random starting position every level// */
 
   position: relative;
-  background-color: white;
+  background-color: red;
   width: 25px;
   height: 25px;
   border-radius: 50px;
   animation-name: slide;
-  animation-duration: 4s;
+  animation-duration: 3.5s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
  @keyframes slide {
   0% {
-    left: 0px;
+    left: 25px;
     top:  0px;
-    background: red;
+
 }
   25% {
     left: 238.5px;
     top: 0px;
-    background: white;
+
   }
   50% {
-    left: 475px;
+    left: 450px;
     top: 0px;
-    background: red;
+
   }
   75% {
     left: 238.5px;
     top: 0px;
-    background: white;
+
   }
 
   100% {
-    left: 0px;
+    left: 25px;
     top: 0px;
-    background: red;
+
   }
-};
+}
 
 .dropperBox {
+  padding-top: 25px;
   height: 25px;
   width: 25px;
 
 }
 
 .walls {
-
-  /* background-color: black; */
+  z-index: 0;
+  padding-bottom: 15px;
   display: flex;
-  /* flex-wrap: nowrap; */
   position: absolute;
   height: 55px;
   width: 500px;
   bottom: 0;
-  /* align-self: flex-end;
-  justify-content: space-around; */
-  /* justify-content: flex-start; */
+
 
 }
 .wallLeft {
+  border-radius: 100px;
   display: none;
   position: absolute;
   background: yellow;
@@ -127,6 +133,7 @@ button {
 
 }
  .wallRight {
+  border-radius: 100px;
   display: none;
   position: absolute;
   background: yellow;
@@ -135,21 +142,28 @@ button {
   right: 0px;
 
 }
+h2 {
+  width: auto;
+  height: 30px;
+  text-align: center;
+  margin-top: 13px;
+  font-family: 'Fredoka One', sans-serif;
+}
 
 
 .theCandy {
   position: absolute;
-  background-color: pink;
+  background-image: linear-gradient(white, red);
   width: 25px;
   height: 25px;
   border-radius: 50px;
 }
 .scoreBoard {
-  color: black;
+  color: #438EC8;
 }
 
 .livesBoard {
-  color: black;
+  color: #438EC8;
 
 }
 .box {

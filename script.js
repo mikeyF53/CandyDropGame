@@ -27,7 +27,7 @@ const blockGone = () => {
 }
 //score and lives count
 let score = 0;
-let lives = 5;
+let lives = 10;
 //display score//
 const dispScoreLives =() => {
   scoreBoardDivL.innerHTML = (`Score: ${score}`);
@@ -70,11 +70,10 @@ const checkCond = () => {
 };
 //lose actions
 const youLose = () => {
-  alert('Sorry, you lost!'); // change this to display on screen innerHTML
-  remBox.style.display = 'inline-flex';
-  blockGone();
-  dropper.remove();
-  lives = 5;
+  alert(`Sorry, you lost! Your score was ${score}`); // change this to display on screen innerHTML
+  //remBox.style.display = 'block';
+  location.reload()
+  lives = 11;
   score = 0;
 }
 //increase speed of dropperBox
@@ -86,13 +85,14 @@ const youLose = () => {
 const speedUp = () => {
   if (score == 5) {
     dropper.style.animationDuration = '3.0s';
-  }else if (score == 15) {
+  }else if (score == 10) {
     dropper.style.animationDuration = '2.5s';
+  }else if (score == 15) {
+    dropper.style.animationDuration = '2.0s';
   }else if (score == 20) {
-    dropper.style.animationDuration = '1.5s';
-  }
+    dropper.style.animationDuration = '1.0s';
 };
-
+}
 
 ////////////Create the candy dropper//////////////
 const startDropper = () => {
@@ -105,7 +105,6 @@ const startDropper = () => {
 }
 ///Create the dropping candy piece
 const candyPiece = () => {
-
   theCandy = document.createElement('div');
   theCandy.classList.add('theCandy');
   return theCandy;
@@ -116,23 +115,20 @@ const moveCandy = (candy) => {
   speedUp();
   collisionDetection(theCandy);
   if (candy.offsetTop + candy.offsetHeight < board.offsetHeight) {
-
-    candy.style.top = `${candy.offsetTop + 10}px`;
+    candy.style.top = `${candy.offsetTop + 7}px`;
   } else if (candy.offsetTop + candy.offsetHeight >= board.offsetHeight) {
     candy.remove();
     clearInterval(timer);
   }
 };
-
-
-///Set position for candyPiece
+///Making a candy and position for candyPiece
 const candyPosition = () => {
 
-  let candyPos = `${dropper.offsetLeft + dropper.offsetTop}px`;
+  let candyPos = `${dropper.offsetLeft}px`;
   const theCandyMade = candyPiece(); // saving to the piece that was created
   board.appendChild(theCandyMade);
   theCandyMade.style.left = candyPos;// setting the created piece to the px postion
-  let timer = setInterval(moveCandy, 20, theCandyMade);
+  let timer = setInterval(moveCandy, 15, theCandyMade);
 };
 //Spacekey for dropping candy
 const candyFire =(ev) => {
@@ -156,5 +152,6 @@ const beginGame = () => {
   startButton.addEventListener('click', candyPiece);
   startButton.addEventListener('click', (removeInstrBox));
   startButton.addEventListener('click', (dispScoreLives));
+  body.addEventListener('mousedown', candyPosition);
 };
 beginGame();

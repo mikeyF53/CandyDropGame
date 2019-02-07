@@ -2,14 +2,14 @@
 
 
 ## Instructions
-Objective of this game is to carefully time the movement of the candy dropper in to the candy collector.
+Objective of this game is to carefully time the movement of the Candy Dropper to drop a piece of candy between the bottom opening.
 
 ## Wireframe
 *Add drawing*
 
 
 ## Main
-A candy dropper will move left and right at an certain speed interval. Pressing the spacebar will release the candy and drop it. The goal is to drop it into the candy collector without touching the sides. Each candy collected will advance a level. Each level will increase the movement speed of the candy dropper. Each session will have 5 lives, game is over when you lose all lives. The player wins when they have caught 10 pieces of candy.
+A candy dropper will move left and right at an certain speed interval. Pressing the spacebar and a mouseclick will release a candy. The goal is to drop it into the bottom opening without touching the walls. Each candy collected will give you one point. Every 5 levels will increase the speed of the Candy Dropper. You will have 10 lives per game, game is over when you lose all lives.
 
 ## Technologies
 Pressing the space bar will move the block, "candy", down. It needs to be timed correctly so it wont hit the wall. Pr
