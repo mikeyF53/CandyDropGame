@@ -18,7 +18,7 @@ JavaScript, HTML, and CSS.
 Obstacles I had to overcome were, collision detection on every dropping candy, and also moving the candy piece itself downwards.
 
 ## Solutions
-I used offset methods to find the point of the candy as well as the walls to create a detection function. Offset was also used to move the candy piece downwards with a, if statement.
+I used offset methods to find the point of the candy as well as the walls to create a detection function. Offset was also used to move the candy piece downwards with an if statement.
 
 ## Code Snippet
 
