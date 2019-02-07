@@ -1,5 +1,3 @@
-console.log('js loaded');
-
 const board = document.querySelector('.gameBoard');
 const startButton = document.querySelector('button');
 const body = document.querySelector('body');
@@ -11,17 +9,18 @@ const wallLeft = document.querySelector('.wallLeft');
 const wallRight = document.querySelector('.wallRight');
 const scoreBoardDivL = document.querySelector('.scoreBoard');
 const livesBoardDivR = document.querySelector('.livesBoard');
+let dropper = document.querySelector('.candyDropper');
 
 const removeInstrBox = () => {
   remBox.style.display = 'none';
 }
 
-
-//show walls display block
+//show walls
 const blockAppear = () => {
   wallLeft.style.display = 'block';
   wallRight.style.display = 'block';
 }
+//hide walls
 const blockGone = () => {
   wallLeft.style.display = 'none';
   wallRight.style.display = 'none';
@@ -34,31 +33,33 @@ const dispScoreLives =() => {
   scoreBoardDivL.innerHTML = (`Score: ${score}`);
   livesBoardDivR.innerHTML = (`Lives: ${lives}`);
 };
-
+//hitwall condition
+const hitWall = () => {
+  lives -= 1;//must put in function
+  dispScoreLives();
+  checkCond();
+  // clearInterval(timer);
+}
+//score condition
+const bullsEye = () => {
+  score += 1;
+  dispScoreLives();
+  // clearInterval(timer);
+}
 
 //collision detection
 const collisionDetection = (candy) => {
     if (candy.offsetTop + candy.offsetHeight > wallLeft.offsetHeight + 485 && candy.offsetLeft <  wallLeft.offsetWidth)  {
     console.log('you hit left wall');
     candy.remove();
-    lives -= 1;//must put in function
-    dispScoreLives();
-    checkCond();
-    clearInterval(timer);
-    }
-   else if (candy.offsetTop + candy.offsetHeight > wallRight.offsetHeight + 485 && candy.offsetLeft + candy.offsetWidth > wallRight.offsetLeft) {
+    hitWall();
+  } else if (candy.offsetTop + candy.offsetHeight > wallRight.offsetHeight + 485 && candy.offsetLeft + candy.offsetWidth > wallRight.offsetLeft) {
     console.log('you hit right wall');
     candy.remove();
-    lives -= 1; //must put in function
-    dispScoreLives();
-    checkCond();
-    clearInterval(timer);
+    hitWall();
   } else if (candy.offsetTop + candy.offsetHeight >= walls.offsetTop + walls.offsetHeight) {
     candy.remove();
-    score += 1;//must put in function
-    dispScoreLives();
-    clearInterval(timer);
-
+    bullsEye();
   }
 };
 //check lose win condition
@@ -69,27 +70,39 @@ const checkCond = () => {
 };
 //lose actions
 const youLose = () => {
-
   alert('Sorry, you lost!'); // change this to display on screen innerHTML
   remBox.style.display = 'inline-flex';
   blockGone();
   dropper.remove();
   lives = 5;
   score = 0;
-
 }
+//increase speed of dropperBox
+// const speedUp = () => {
+//   if (score >= 5) {
+//     dropper.style.animationDuration = '1s';
+//   }
+// }
+const speedUp = () => {
+  if (score == 5) {
+    dropper.style.animationDuration = '3.0s';
+  }else if (score == 15) {
+    dropper.style.animationDuration = '2.5s';
+  }else if (score == 20) {
+    dropper.style.animationDuration = '1.5s';
+  }
+};
+
 
 ////////////Create the candy dropper//////////////
 const startDropper = () => {
-
   const dropperBox = document.createElement('div');
     dropperBox.classList.add('dropperBox')
     dropper = document.createElement('div');
     dropper.classList.add('candyDropper');
     board.appendChild(dropperBox);
     dropperBox.appendChild(dropper);
-};
-
+}
 ///Create the dropping candy piece
 const candyPiece = () => {
 
@@ -100,23 +113,26 @@ const candyPiece = () => {
 
 //dropping candy//
 const moveCandy = (candy) => {
+  speedUp();
   collisionDetection(theCandy);
   if (candy.offsetTop + candy.offsetHeight < board.offsetHeight) {
+
     candy.style.top = `${candy.offsetTop + 10}px`;
   } else if (candy.offsetTop + candy.offsetHeight >= board.offsetHeight) {
     candy.remove();
     clearInterval(timer);
   }
-
 };
+
+
 ///Set position for candyPiece
 const candyPosition = () => {
 
-  let candyPos = `${dropper.offsetLeft}px`;
+  let candyPos = `${dropper.offsetLeft + dropper.offsetTop}px`;
   const theCandyMade = candyPiece(); // saving to the piece that was created
   board.appendChild(theCandyMade);
   theCandyMade.style.left = candyPos;// setting the created piece to the px postion
-  timer = setInterval(moveCandy, 20, theCandyMade);
+  let timer = setInterval(moveCandy, 20, theCandyMade);
 };
 //Spacekey for dropping candy
 const candyFire =(ev) => {
@@ -124,10 +140,13 @@ const candyFire =(ev) => {
 
       candyPosition();
     }
+    // setTimeout(function (candyFire) {
+    //   console.log("shoot")
+    // }, 2000);
 };
 //start the game //
 const playGame = () => {
-  body.addEventListener('keyup', candyFire);
+  body.addEventListener('keydown', candyFire);
 }
 playGame();
 

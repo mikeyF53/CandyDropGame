@@ -1,8 +1,9 @@
 h2 {
-  border: 2px solid pink;
+
   width: auto;
   height: 30px;
   text-align: center;
+  margin-top: 10px;
 
 
 }
@@ -46,15 +47,17 @@ button {
   z-index: 1;
   height: 40px;
   width: 20%;
+  border-radius: 25px;
+  margin-bottom: 20;
 
   /* left: 200px; */
   /* bottom: 10px; */
   align-self: flex-end;
 
 }
-.candyDropper {
+.candyDropper  {
   /* //must add random starting position every level// */
-  /* left: 0px; */
+
   position: relative;
   background-color: white;
   width: 25px;
@@ -68,7 +71,7 @@ button {
  @keyframes slide {
   0% {
     left: 0px;
-    top: 0px;
+    top:  0px;
     background: red;
 }
   25% {
@@ -89,7 +92,8 @@ button {
 
   100% {
     left: 0px;
-    background: white;
+    top: 0px;
+    background: red;
   }
 };
 
@@ -116,7 +120,7 @@ button {
 .wallLeft {
   display: none;
   position: absolute;
-  background: pink;
+  background: yellow;
   width: 220px;
   height: 55px;
   left: 0px;
@@ -125,15 +129,13 @@ button {
  .wallRight {
   display: none;
   position: absolute;
-  background: pink;
+  background: yellow;
   width: 220px;
   height: 55px;
   right: 0px;
 
 }
-h2 {
-  margin-top: 10px;
-}
+
 
 .theCandy {
   position: absolute;
@@ -143,11 +145,11 @@ h2 {
   border-radius: 50px;
 }
 .scoreBoard {
-  color: white;
+  color: black;
 }
 
 .livesBoard {
-  color: white;
+  color: black;
 
 }
 .box {
