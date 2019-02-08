@@ -1,7 +1,7 @@
 body {
   background-color: grey;
 }
-/* candy banner title */
+/*  candy title banner*/
 h1 {
   padding-top: 25px;
   width: auto;
@@ -11,7 +11,7 @@ h1 {
   font-family: 'Fredoka One', sans-serif;
   font-size: 50px;
   color: tomato;
-
+}
 /* the div containing the sections */
 .instrBox {
   padding-top: 60px;
