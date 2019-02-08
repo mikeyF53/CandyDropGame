@@ -1,5 +1,6 @@
 body {
   background-color: grey;
+  overflow: hidden;
 }
 /*  candy title banner*/
 h1 {
@@ -46,6 +47,29 @@ h1 {
   position: relative;
   margin: 0 auto;
 }
+/* speedup box */
+.speedUpBox {
+  height: 25px;
+  width: 200px;
+  font-family: 'Permanent Marker', sans-serif;
+  font-size: 25px;
+  animation: speedUp 4s;
+  position: relative;
+  top: 300px;
+  left: 350px;
+  display: none;
+
+}
+/* placement and movement of speed up text */
+  @keyframes speedUp {
+    0% {
+      transform: translateY(-500%);
+      transform: translateX(-200%)
+    }
+    100%{
+      transform: translateY(0%)
+    }
+  }
 /* section boxes on startpage */
 section {
   text-align: center;

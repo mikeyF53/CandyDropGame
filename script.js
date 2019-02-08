@@ -10,7 +10,7 @@ const wallRight = document.querySelector('.wallRight');
 const scoreBoardDivL = document.querySelector('.scoreBoard');
 const livesBoardDivR = document.querySelector('.livesBoard');
 let dropper = document.querySelector('.candyDropper');
-const speedDiv = document.querySelector('.speedUp');
+const speedDiv = document.querySelector('.speedUpBox');
 
 //remove the start page elements
 const removeInstrBox = () => {
@@ -56,6 +56,7 @@ const collisionDetection = (candy) => {
   } else if (candy.offsetTop + candy.offsetHeight >= walls.offsetTop + walls.offsetHeight) {
     candy.remove();
     bullsEye();
+    speedUp();
   }
 };
 //check lose win condition
@@ -70,19 +71,20 @@ const youLose = () => {
   location.reload()
   lives = 11;
   score = 0;
+  speed = 3.5
 };
-//increase the speed of candy dropper//
+//increase the speed every 5 points//
+  let speed = 3.5;
 const speedUp = () => {
-  if (score == 5) {
-    dropper.style.animationDuration = '3.0s';
-  }else if (score == 10) {
-    dropper.style.animationDuration = '2.5s';
-  }else if (score == 15) {
-    dropper.style.animationDuration = '2.0s';
-  }else if (score == 20) {
-    dropper.style.animationDuration = '1.5s';
+  if (score !== 0 && score % 5 === 0) {
+    speed -= 0.5
+    document.querySelector('.speedUpBox').style.display = 'block' ;
+  } else if (score !== 0 && score % 5 !== 0) {
+    document.querySelector('.speedUpBox').style.display = 'none' ;
   }
-};
+  dropper.style.animationDuration = `${speed}s`
+}
+
 ////////////Create the candy dropper//////////////
 const startDropper = () => {
   const dropperBox = document.createElement('div');
@@ -91,6 +93,13 @@ const startDropper = () => {
     dropper.classList.add('candyDropper');
     board.appendChild(dropperBox);
     dropperBox.appendChild(dropper);
+///speed up text animation at every 5
+    const mkTextBox = document.createElement('div');
+    mkTextBox.classList.add('speedUpBox');
+    dropperBox.appendChild(mkTextBox);
+    mkTextBox.innerHTML = ('  SPEED UP!!!!')
+
+    //const speedText = document.querySelector('')
 };
 ///Create the dropping candy piece
 const candyPiece = () => {
@@ -100,7 +109,6 @@ const candyPiece = () => {
 };
 //dropping candy//
 const moveCandy = (candy) => {
-  speedUp();
   collisionDetection(theCandy);
   if (candy.offsetTop + candy.offsetHeight < board.offsetHeight) {
     candy.style.top = `${candy.offsetTop + 7}px`;
