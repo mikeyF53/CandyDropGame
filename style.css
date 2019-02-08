@@ -1,6 +1,7 @@
 body {
   background-color: grey;
 }
+/* candy banner title */
 h1 {
   padding-top: 25px;
   width: auto;
@@ -10,13 +11,21 @@ h1 {
   font-family: 'Fredoka One', sans-serif;
   font-size: 50px;
   color: tomato;
-}
+
+/* the div containing the sections */
 .instrBox {
   padding-top: 60px;
   display: flex;
   justify-content: space-around;
 }
-
+/* front page section boxes */
+.box {
+  font-family: 'Gloria Hallelujah', serif;
+  font-size: 25px;
+  color: royalblue;
+  line-height: 1;
+}
+/* front page elements to remove */
 .toRemove {
   border-radius: 50px;
   justify-content: center;
@@ -27,6 +36,7 @@ h1 {
   height: 585px;
   margin: 0 auto;
 }
+/* game board */
 .gameBoard {
   border-radius: 50px;
   border: 5px dashed #EC7063;
@@ -36,7 +46,7 @@ h1 {
   position: relative;
   margin: 0 auto;
 }
-
+/* section boxes on startpage */
 section {
   text-align: center;
   background-color: #AF7AC5;
@@ -45,12 +55,13 @@ section {
   border: 3px dashed white;
   width: 150px;
   height: 300px;
-
 }
+/* the start button */
 .button {
   padding-top: 40px;
   text-align: center;
 }
+/* the start button */
 button {
   position: relative;
   background-color: #EC7063;
@@ -63,9 +74,8 @@ button {
   border-radius: 50px;
   align-self: flex-end;
 }
+/* the moving dropper */
 .candyDropper  {
-  /* //must add random starting position every level// */
-
   position: relative;
   background-color: red;
   width: 25px;
@@ -76,42 +86,36 @@ button {
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
+/* animation for candy dropper moving left and right */
  @keyframes slide {
   0% {
     left: 25px;
     top:  0px;
-
 }
   25% {
     left: 238.5px;
     top: 0px;
-
   }
   50% {
     left: 450px;
     top: 0px;
-
   }
   75% {
     left: 238.5px;
     top: 0px;
-
   }
-
   100% {
     left: 25px;
     top: 0px;
-
   }
 }
-
+/* candy dropper ball */
 .dropperBox {
   padding-top: 25px;
   height: 25px;
   width: 25px;
-
 }
-
+/* wall containing wall left and right */
 .walls {
   z-index: 0;
   padding-bottom: 15px;
@@ -120,8 +124,6 @@ button {
   height: 55px;
   width: 500px;
   bottom: 0;
-
-
 }
 .wallLeft {
   border-radius: 100px;
@@ -131,7 +133,6 @@ button {
   width: 220px;
   height: 55px;
   left: 0px;
-
 }
  .wallRight {
   border-radius: 100px;
@@ -141,8 +142,8 @@ button {
   width: 220px;
   height: 55px;
   right: 0px;
-
 }
+/* text in walls left and right */
 h2 {
   width: auto;
   height: 30px;
@@ -150,8 +151,7 @@ h2 {
   margin-top: 13px;
   font-family: 'Fredoka One', sans-serif;
 }
-
-
+/* the candy being dropped */
 .theCandy {
   position: absolute;
   background-image: linear-gradient(white, red);
@@ -159,14 +159,11 @@ h2 {
   height: 25px;
   border-radius: 50px;
 }
+/* on left wall */
 .scoreBoard {
   color: #438EC8;
 }
-
+/* on right wall */
 .livesBoard {
   color: #438EC8;
-
-}
-.box {
-  font-size: 24px;
 }
